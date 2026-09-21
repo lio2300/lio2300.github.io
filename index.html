@@ -3,402 +3,248 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio de Julio Barreto - Software Developer especializado en Angular, TypeScript, Java y Spring Boot.">
+  <meta name="description" content="Julio Barreto - Software Developer. Angular, React, Node.js, Java, Spring Boot, APIs e integraciones.">
   <title>Julio Barreto | Software Developer</title>
   <style>
     :root {
-      --primary: #00539f;
-      --primary-light: #1675c5;
-      --secondary: #ef3e42;
-      --bg: #0b1117;
-      --surface: #111a23;
-      --surface-2: #16222d;
-      --text: #f9fafb;
-      --muted: #a9b5c1;
-      --border: rgba(255,255,255,.09);
-      --max: 1120px;
+      --primary:#00539f; --primary-light:#1682d4; --secondary:#ef3e42;
+      --bg:#0b1117; --surface:#111a23; --surface2:#17232e;
+      --text:#f9fafb; --muted:#aab6c2; --border:rgba(255,255,255,.09);
+      --max:1120px;
     }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-    }
-    a { color: inherit; text-decoration: none; }
-    .container { width: min(var(--max), calc(100% - 40px)); margin: auto; }
-
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 10;
-      background: rgba(11,17,23,.82);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-inner {
-      height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .logo { font-weight: 800; letter-spacing: -.03em; }
-    .logo span { color: var(--secondary); }
-    .nav-links { display: flex; gap: 26px; color: var(--muted); font-size: .92rem; }
-    .nav-links a:hover { color: var(--text); }
-
-    .hero {
-      min-height: 92vh;
-      display: flex;
-      align-items: center;
-      padding: 120px 0 80px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 520px; height: 520px;
-      background: var(--primary);
-      opacity: .16;
-      filter: blur(120px);
-      border-radius: 50%;
-      top: 80px; right: -150px;
-    }
-    .eyebrow {
-      color: #7db9e8;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      font-size: .78rem;
-      margin-bottom: 18px;
-    }
-    h1 {
-      font-size: clamp(3rem, 7vw, 6.2rem);
-      line-height: .98;
-      letter-spacing: -.065em;
-      max-width: 850px;
-    }
-    h1 span { color: var(--primary-light); }
-    .hero p {
-      max-width: 730px;
-      color: var(--muted);
-      font-size: 1.15rem;
-      margin: 26px 0 32px;
-    }
-    .actions { display: flex; gap: 14px; flex-wrap: wrap; }
-    .btn {
-      padding: 12px 20px;
-      border-radius: 9px;
-      font-weight: 700;
-      border: 1px solid var(--border);
-      transition: .2s ease;
-    }
-    .btn-primary { background: var(--primary); }
-    .btn-primary:hover { background: var(--primary-light); transform: translateY(-2px); }
-    .btn-outline { color: var(--muted); }
-    .btn-outline:hover { color: var(--text); border-color: rgba(255,255,255,.25); }
-
-    section { padding: 95px 0; border-top: 1px solid var(--border); }
-    .section-title {
-      font-size: 2rem;
-      letter-spacing: -.04em;
-      margin-bottom: 12px;
-    }
-    .section-intro { color: var(--muted); max-width: 720px; margin-bottom: 38px; }
-
-    .about-grid, .experience-grid {
-      display: grid;
-      grid-template-columns: 1.3fr .7fr;
-      gap: 28px;
-    }
-    .card {
-      background: linear-gradient(145deg, var(--surface), rgba(17,26,35,.65));
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-    }
-    .card p { color: var(--muted); }
-    .highlight {
-      border-left: 3px solid var(--secondary);
-      padding-left: 18px;
-      margin-top: 24px;
-    }
-    .highlight strong { display: block; margin-bottom: 4px; }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .skill {
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      color: #dce5ec;
-      font-size: .9rem;
-    }
-
-    .timeline { display: grid; gap: 18px; }
-    .role {
-      padding: 24px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--surface);
-    }
-    .role-header {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      margin-bottom: 10px;
-    }
-    .role h3 { font-size: 1.12rem; }
-    .date { color: #7db9e8; white-space: nowrap; font-size: .9rem; }
-    .role p { color: var(--muted); }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-    .project {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 26px;
-      transition: .2s ease;
-    }
-    .project:hover { transform: translateY(-4px); border-color: rgba(22,117,197,.6); }
-    .project h3 { margin-bottom: 8px; }
-    .project p { color: var(--muted); margin-bottom: 18px; }
-    .project a { color: #7db9e8; font-weight: 700; }
-
-    .contact {
-      text-align: center;
-      padding-bottom: 110px;
-    }
-    .contact p { color: var(--muted); max-width: 620px; margin: 0 auto 26px; }
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 25px 0;
-      color: #778491;
-      font-size: .85rem;
-      text-align: center;
-    }
-
-    @media (max-width: 760px) {
-      .nav-links { display: none; }
-      .about-grid, .experience-grid, .projects { grid-template-columns: 1fr; }
-      .hero { min-height: 85vh; }
-      .role-header { flex-direction: column; gap: 3px; }
-      .date { white-space: normal; }
-      section { padding: 70px 0; }
-    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(var(--max),calc(100% - 40px));margin:auto}
+    nav{position:fixed;inset:0 0 auto;z-index:20;background:rgba(11,17,23,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+    .nav{height:70px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-weight:850;font-size:1.15rem}.logo span{color:var(--secondary)}
+    .links{display:flex;gap:25px;color:var(--muted);font-size:.9rem}.links a:hover{color:#fff}
+    .hero{min-height:92vh;display:flex;align-items:center;padding:120px 0 80px;position:relative;overflow:hidden}
+    .hero:after{content:"";position:absolute;width:520px;height:520px;right:-180px;top:80px;border-radius:50%;background:var(--primary);opacity:.17;filter:blur(120px)}
+    .eyebrow{color:#7fc0ef;text-transform:uppercase;letter-spacing:.13em;font-weight:750;font-size:.78rem;margin-bottom:18px}
+    h1{font-size:clamp(3rem,7vw,6.2rem);line-height:.98;letter-spacing:-.065em;max-width:900px}
+    h1 span{color:var(--primary-light)}
+    .hero p{max-width:760px;color:var(--muted);font-size:1.15rem;margin:28px 0 32px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{padding:12px 19px;border-radius:9px;border:1px solid var(--border);font-weight:750;transition:.2s}
+    .primary{background:var(--primary)}.primary:hover{background:var(--primary-light);transform:translateY(-2px)}
+    .outline{color:var(--muted)}.outline:hover{color:#fff;border-color:rgba(255,255,255,.25)}
+    section{padding:92px 0;border-top:1px solid var(--border)}
+    .title{font-size:2rem;letter-spacing:-.04em;margin-bottom:10px}.intro{color:var(--muted);max-width:760px;margin-bottom:35px}
+    .grid2{display:grid;grid-template-columns:1.35fr .65fr;gap:22px}
+    .card,.role,.project{background:var(--surface);border:1px solid var(--border);border-radius:16px}
+    .card{padding:28px}.card p,.role p,.project p{color:var(--muted)}
+    .highlight{border-left:3px solid var(--secondary);padding-left:17px;margin-top:22px}.highlight strong{display:block;margin-bottom:3px}
+    .skills{display:flex;flex-wrap:wrap;gap:9px}.skill{padding:7px 11px;border-radius:999px;background:var(--surface2);border:1px solid var(--border);font-size:.88rem;color:#dce6ed}
+    .timeline{display:grid;gap:17px}
+    .role{padding:25px}
+    .role-head{display:flex;justify-content:space-between;gap:20px;margin-bottom:8px}
+    .role h3{font-size:1.1rem}.date{color:#7fc0ef;font-size:.88rem;white-space:nowrap}
+    .role ul{margin:13px 0 0 19px;color:var(--muted)}.role li{margin:5px 0}
+    .metric{display:inline-block;margin-top:12px;margin-right:7px;padding:5px 9px;border-radius:7px;background:rgba(0,83,159,.18);color:#a8d7fa;font-size:.8rem;font-weight:700}
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.project{padding:25px;transition:.2s}.project:hover{transform:translateY(-3px);border-color:rgba(22,130,212,.55)}
+    .project h3{margin-bottom:7px}.project p{margin-bottom:15px}.project a{color:#7fc0ef;font-weight:700}
+    .contact{text-align:center;padding-bottom:105px}.contact p{color:var(--muted);max-width:650px;margin:0 auto 25px}
+    footer{text-align:center;border-top:1px solid var(--border);padding:24px;color:#778491;font-size:.84rem}
+    @media(max-width:760px){.links{display:none}.grid2,.projects{grid-template-columns:1fr}.role-head{flex-direction:column;gap:2px}.date{white-space:normal}section{padding:70px 0}}
   </style>
 </head>
-
 <body>
-  <nav>
-    <div class="container nav-inner">
-      <a class="logo" href="#inicio">JB<span>.</span></a>
-      <div class="nav-links">
-        <a href="#sobre-mi">Sobre mí</a>
-        <a href="#experiencia">Experiencia</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#contacto">Contacto</a>
+<nav>
+  <div class="container nav">
+    <a class="logo" href="#inicio">Julio Barreto<span>.</span></a>
+    <div class="links">
+      <a href="#sobre-mi">Sobre mí</a><a href="#experiencia">Experiencia</a><a href="#stack">Stack</a><a href="#proyectos">Proyectos</a><a href="#contacto">Contacto</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="container">
+    <div class="eyebrow">Software Developer · Ecuador</div>
+    <h1>Software que conecta <span>tecnología y negocio.</span></h1>
+    <p>
+      Software Developer con más de 5 años de experiencia en desarrollo de software,
+      principalmente con Angular y JavaScript, además de experiencia en React, Node.js,
+      Java, Spring Boot, APIs, bases de datos e integraciones.
+    </p>
+    <div class="actions">
+      <a class="btn primary" href="#experiencia">Mi experiencia</a>
+      <a class="btn outline" href="https://github.com/lio2300" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn outline" href="https://www.linkedin.com/in/julio-césar-barreto-zambrano-b49128227/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
+<section id="sobre-mi">
+  <div class="container">
+    <h2 class="title">Sobre mí</h2>
+    <p class="intro">Me gusta entender el problema, analizar sus causas y construir soluciones que sean mantenibles y útiles para el negocio.</p>
+    <div class="grid2">
+      <div class="card">
+        <p>
+          A lo largo de mi carrera he trabajado en diferentes proyectos y tecnologías,
+          adaptándome a distintos contextos y equipos. Mi experiencia combina desarrollo
+          frontend, backend, integración de APIs y trabajo cercano con clientes.
+        </p>
+        <div class="highlight">
+          <strong>Resolución de problemas</strong>
+          <p>Investigo comportamientos funcionales y técnicos, identifico causas raíz y defino planes de acción para garantizar la estabilidad operativa.</p>
+        </div>
+        <div class="highlight">
+          <strong>Comunicación con el negocio</strong>
+          <p>Trabajo directamente con clientes para levantar requerimientos, explicar conceptos técnicos de forma clara y conciliar necesidades técnicas y de negocio.</p>
+        </div>
+        <div class="highlight">
+          <strong>Calidad de código</strong>
+          <p>Aplico principios SOLID y patrones de diseño para crear componentes reutilizables y soluciones más limpias y mantenibles.</p>
+        </div>
+      </div>
+      <div class="card" id="stack">
+        <h3 style="margin-bottom:18px">Tecnologías</h3>
+        <div class="skills">
+          <span class="skill">Angular 12 / 14 / 17</span><span class="skill">React 17</span>
+          <span class="skill">TypeScript</span><span class="skill">JavaScript</span>
+          <span class="skill">Node.js</span><span class="skill">Java</span><span class="skill">Spring Boot</span>
+          <span class="skill">NestJS</span><span class="skill">Express</span><span class="skill">PostgreSQL</span>
+          <span class="skill">MySQL</span><span class="skill">Redux / Saga</span><span class="skill">Docker</span>
+          <span class="skill">Git</span><span class="skill">AWS</span><span class="skill">REST APIs</span>
+          <span class="skill">OpenAPI</span><span class="skill">RAML</span><span class="skill">CI/CD</span>
+          <span class="skill">Karma</span>
+        </div>
       </div>
     </div>
-  </nav>
+  </div>
+</section>
 
-  <main>
-    <section class="hero" id="inicio">
-      <div class="container">
-        <div class="eyebrow">Software Developer · Ecuador</div>
-        <h1>Construyo software con foco en <span>calidad y valor.</span></h1>
-        <p>
-          Desarrollador de software con experiencia principalmente en frontend con Angular,
-          además de experiencia en Java, Spring Boot, APIs, PostgreSQL y soluciones orientadas
-          a servicios.
-        </p>
-        <div class="actions">
-          <a class="btn btn-primary" href="#experiencia">Ver experiencia</a>
-          <a class="btn btn-outline" href="https://github.com/lio2300" target="_blank" rel="noopener">GitHub ↗</a>
-          <a class="btn btn-outline" href="#contacto">Contacto</a>
-        </div>
-      </div>
-    </section>
+<section id="experiencia">
+  <div class="container">
+    <h2 class="title">Experiencia profesional</h2>
+    <p class="intro">Una trayectoria que combina desarrollo frontend y full stack con integración de APIs, automatización, soporte técnico y trabajo directo con clientes.</p>
+    <div class="timeline">
 
-    <section id="sobre-mi">
-      <div class="container">
-        <h2 class="section-title">Sobre mí</h2>
-        <p class="section-intro">
-          Me interesa entender el problema antes de implementar la solución y encontrar un
-          equilibrio entre calidad técnica, mantenibilidad y valor para el negocio.
-        </p>
+      <article class="role">
+        <div class="role-head"><h3>Integration Engineer · Jelou</h3><span class="date">Sep. 2025 — Actualmente</span></div>
+        <p>Integración de soluciones y trabajo directo con clientes en contextos FinTech.</p>
+        <ul>
+          <li>Levantamiento de requerimientos y propuesta de mejoras funcionales orientadas a optimización de costos y experiencia de usuario.</li>
+          <li>Investigación de comportamientos funcionales y técnicos, identificación de causas raíz y definición de planes de acción.</li>
+          <li>Traducción de conceptos técnicos complejos a información clara y orientada al negocio.</li>
+          <li>Diseño e implementación de soluciones personalizadas de procesos para el sector FinTech.</li>
+          <li>Desarrollo de funciones AWS Lambda para data exchange en flujos de WhatsApp.</li>
+          <li>Análisis de requerimientos y traducción a integraciones técnicas dentro de bots conversacionales.</li>
+        </ul>
+      </article>
 
-        <div class="about-grid">
-          <div class="card">
-            <p>
-              A lo largo de mi carrera he participado en diferentes proyectos y he desarrollado
-              una forma de trabajo basada en código limpio, principios SOLID, desacoplamiento,
-              reutilización y facilidad de mantenimiento.
-            </p>
-            <div class="highlight">
-              <strong>Forma de trabajo</strong>
-              <p>
-                Analizo los requerimientos, identifico riesgos y oportunidades de mejora y
-                comunico con anticipación cuando considero que una decisión puede impactar
-                el proyecto.
-              </p>
-            </div>
-            <div class="highlight">
-              <strong>IA aplicada al desarrollo</strong>
-              <p>
-                Utilizo herramientas de inteligencia artificial para mejorar mi productividad,
-                apoyándome en agentes, skills y MCP según las necesidades del proyecto.
-              </p>
-            </div>
-          </div>
+      <article class="role">
+        <div class="role-head"><h3>Frontend Developer Semi Senior II · ClaroInsurance</h3><span class="date">Jun. 2023 — Sep. 2025</span></div>
+        <p>Desarrollo frontend con Angular y participación en procesos de calidad, Scrum y entrega de producto.</p>
+        <ul>
+          <li>Desarrollo Frontend con Angular 14 y Angular 17.</li>
+          <li>Integración de más de 100 historias de usuario en 2 proyectos clave.</li>
+          <li>Creación de componentes reutilizables siguiendo principios SOLID.</li>
+          <li>Implementación de patrones Builder, Decorator y Adapter.</li>
+          <li>Revisión y aprobación de Pull Requests en GitHub.</li>
+          <li>Diagnóstico y resolución de bugs reportados por soporte.</li>
+          <li>Presentación y demostración de nuevas funcionalidades al Product Owner.</li>
+          <li>Diseño e implementación de una mejora en CI/CD y optimización del flujo GitFlow para integraciones en QA.</li>
+        </ul>
+        <span class="metric">70% mejora en eficiencia CI/CD</span>
+        <span class="metric">100+ historias de usuario</span>
+        <span class="metric">95% aprobación de demos</span>
+      </article>
 
-          <div class="card">
-            <h3 style="margin-bottom:18px;">Stack principal</h3>
-            <div class="skills">
-              <span class="skill">Angular</span>
-              <span class="skill">TypeScript</span>
-              <span class="skill">React</span>
-              <span class="skill">Java</span>
-              <span class="skill">Spring Boot</span>
-              <span class="skill">Node.js</span>
-              <span class="skill">PostgreSQL</span>
-              <span class="skill">REST APIs</span>
-              <span class="skill">Docker</span>
-              <span class="skill">AWS</span>
-              <span class="skill">Git</span>
-              <span class="skill">CI/CD</span>
-              <span class="skill">GitHub Actions</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+      <article class="role">
+        <div class="role-head"><h3>Consultor Sr. APIs BIAN · Play Digital Consulting</h3><span class="date">Ago. 2022 — May. 2023</span></div>
+        <p>Integración y transformación de APIs bancarias alineadas con BIAN.</p>
+        <ul>
+          <li>Análisis y mapeo de campos para operaciones funcionales y Service Domains BIAN.</li>
+          <li>Automatización de estructuras JSON al estándar empresarial.</li>
+          <li>Desacoplamiento, orquestación e integración de funcionalidades bancarias.</li>
+          <li>Actualización de documentación RAML para Service Domains.</li>
+          <li>Generación de transformaciones desde sistemas legados hacia el estándar BIAN.</li>
+          <li>Creación de especificaciones OpenAPI (OAS) a partir de documentación RAML.</li>
+          <li>Soporte técnico para incidencias y gestión de cambios en releases.</li>
+        </ul>
+        <span class="metric">40% mejora en rendimiento de transformación</span>
+      </article>
 
-    <section id="experiencia">
-      <div class="container">
-        <h2 class="section-title">Experiencia</h2>
-        <p class="section-intro">
-          Experiencia en desarrollo de software, integración de APIs y colaboración directa
-          con equipos y clientes.
-        </p>
+      <article class="role">
+        <div class="role-head"><h3>Frontend Developer · React · Soaint</h3><span class="date">Ene. 2022 — Ago. 2022</span></div>
+        <ul>
+          <li>Desarrollo Frontend con ReactJS 17.</li>
+          <li>Uso de Saga y Middleware para gestión de estado.</li>
+          <li>Consumo e integración de servicios REST y APIs.</li>
+          <li>Implementación de requerimientos funcionales bajo metodologías ágiles.</li>
+        </ul>
+      </article>
 
-        <div class="timeline">
-          <article class="role">
-            <div class="role-header">
-              <div>
-                <h3>Developer SemiSenior II · Claro Insurance</h3>
-              </div>
-              <div class="date">Jun 2023 — Jul 2025</div>
-            </div>
-            <p>
-              Desarrollo y mantenimiento de soluciones de software, participación en análisis
-              de requerimientos y resolución de casos reportados. También participé en sesiones
-              técnicas y funcionales con clientes para resolver incidentes y proponer mejoras
-              sobre procesos existentes.
-            </p>
-          </article>
+      <article class="role">
+        <div class="role-head"><h3>Full Stack Developer · Angular / NodeJS · Wage Dollars</h3><span class="date">Sep. 2020 — Dic. 2021</span></div>
+        <ul>
+          <li>Desarrollo Frontend con Angular 12 y ReactJS.</li>
+          <li>Desarrollo Backend escalable con Node.js.</li>
+          <li>Administración y optimización de bases de datos PostgreSQL.</li>
+          <li>Integración y consumo de APIs del equipo Backend.</li>
+          <li>Desarrollo con ReactJS 17, Saga y Middleware.</li>
+        </ul>
+      </article>
 
-          <article class="role">
-            <div class="role-header">
-              <div>
-                <h3>Consultor Senior APIs / BIAN · Play Digital Consulting</h3>
-              </div>
-              <div class="date">Ago 2022 — Ene 2023</div>
-            </div>
-            <p>
-              Trabajo relacionado con integración de APIs, dominios de servicio BIAN,
-              transformación de modelos legacy hacia especificaciones OAS y automatización
-              de estándares JSON.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
+      <article class="role">
+        <div class="role-head"><h3>Full Stack Developer · Angular / NodeJS · Ceos Soluciones</h3><span class="date">Mar. 2019 — Ago. 2020</span></div>
+        <ul>
+          <li>Desarrollo Backend con Node.js y administración de PostgreSQL.</li>
+          <li>Desarrollo y mantenimiento de sistemas Frontend y servidores CentOS 7.</li>
+          <li>Gestión y desarrollo de plataformas eCommerce con Angular 12.</li>
+          <li>Creación y personalización de plantillas eCommerce en Angular 12.</li>
+          <li>Desarrollo de plantillas eCommerce con ReactJS, Saga y Middleware.</li>
+        </ul>
+      </article>
 
-    <section id="proyectos">
-      <div class="container">
-        <h2 class="section-title">Proyectos</h2>
-        <p class="section-intro">
-          Algunos proyectos públicos y trabajos técnicos que muestran parte de mi experiencia.
-        </p>
+      <article class="role">
+        <div class="role-head"><h3>Full Stack Developer · JavaScript / PHP · Unidad Educativa Madre Laura</h3><span class="date">Jun. 2018 — Feb. 2019</span></div>
+        <ul>
+          <li>Configuración y administración de servidores Ubuntu.</li>
+          <li>Creación y mantenimiento de bases de datos MySQL.</li>
+          <li>Implementación de interfaces dinámicas con JavaScript.</li>
+          <li>Desarrollo backend con PHP 7.4.</li>
+          <li>Integración de APIs de terceros.</li>
+        </ul>
+      </article>
 
-        <div class="projects">
-          <article class="project">
-            <h3>Front-end Sofka</h3>
-            <p>
-              Proyecto frontend desarrollado como parte de una evaluación técnica,
-              utilizando tecnologías web modernas.
-            </p>
-            <a href="https://github.com/lio2300/front-end-sofka" target="_blank" rel="noopener">
-              Ver repositorio ↗
-            </a>
-          </article>
+    </div>
+  </div>
+</section>
 
-          <article class="project">
-            <h3>Jelou Test</h3>
-            <p>
-              Proyecto técnico desarrollado para demostrar conocimientos de desarrollo
-              y resolución de problemas.
-            </p>
-            <a href="https://github.com/lio2300/jelou-test" target="_blank" rel="noopener">
-              Ver repositorio ↗
-            </a>
-          </article>
+<section id="proyectos">
+  <div class="container">
+    <h2 class="title">Proyectos y trabajo técnico</h2>
+    <p class="intro">Además de mi experiencia profesional, mantengo proyectos y trabajo técnico que puedes revisar en GitHub.</p>
+    <div class="projects">
+      <article class="project"><h3>Front-end Sofka</h3><p>Proyecto frontend disponible públicamente en GitHub.</p><a href="https://github.com/lio2300/front-end-sofka" target="_blank" rel="noopener">Ver repositorio ↗</a></article>
+      <article class="project"><h3>Jelou Test</h3><p>Proyecto técnico disponible públicamente en GitHub.</p><a href="https://github.com/lio2300/jelou-test" target="_blank" rel="noopener">Ver repositorio ↗</a></article>
+      <article class="project"><h3>Integraciones y APIs</h3><p>Experiencia en REST APIs, BIAN, RAML, OpenAPI, integraciones técnicas y soluciones orientadas a procesos.</p><a href="https://github.com/lio2300" target="_blank" rel="noopener">Ver GitHub ↗</a></article>
+      <article class="project"><h3>Frontend y arquitectura</h3><p>Experiencia con Angular, React, TypeScript, componentes reutilizables, patrones de diseño y gestión de estado.</p><a href="https://github.com/lio2300" target="_blank" rel="noopener">Ver GitHub ↗</a></article>
+    </div>
+  </div>
+</section>
 
-          <article class="project">
-            <h3>Arquitectura y APIs</h3>
-            <p>
-              Experiencia trabajando con Spring Boot, microservicios, API Gateway, JWT,
-              PostgreSQL y Docker en soluciones orientadas a servicios.
-            </p>
-            <a href="https://github.com/lio2300" target="_blank" rel="noopener">
-              Ver GitHub ↗
-            </a>
-          </article>
+<section id="contacto" class="contact">
+  <div class="container">
+    <h2 class="title">Conectemos</h2>
+    <p>Estoy interesado en oportunidades donde pueda aportar mi experiencia en desarrollo, integraciones y resolución de problemas, mientras continúo creciendo profesionalmente.</p>
+    <div class="actions" style="justify-content:center">
+      <a class="btn primary" href="https://www.linkedin.com/in/julio-césar-barreto-zambrano-b49128227/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn outline" href="https://github.com/lio2300" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn outline" href="mailto:julio-barreto@hotmai.es">Email</a>
+    </div>
+  </div>
+</section>
+</main>
 
-          <article class="project">
-            <h3>Automatización y DevOps</h3>
-            <p>
-              Experiencia utilizando Docker, GitHub Actions y pipelines CI/CD para automatizar
-              procesos de integración y despliegue.
-            </p>
-            <a href="https://github.com/lio2300" target="_blank" rel="noopener">
-              Ver GitHub ↗
-            </a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="contacto" class="contact">
-      <div class="container">
-        <h2 class="section-title">¿Trabajamos juntos?</h2>
-        <p>
-          Estoy abierto a nuevas oportunidades donde pueda aportar mi experiencia,
-          continuar aprendiendo y participar en proyectos con desafíos técnicos interesantes.
-        </p>
-        <div class="actions" style="justify-content:center;">
-          <a class="btn btn-primary" href="https://github.com/lio2300" target="_blank" rel="noopener">GitHub ↗</a>
-          <!-- Reemplaza el enlace siguiente por tu LinkedIn -->
-          <a class="btn btn-outline" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn ↗</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    © 2026 Julio Barreto · Software Developer
-  </footer>
+<footer>© 2026 Julio Barreto · Software Developer</footer>
 </body>
 </html>
